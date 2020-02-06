@@ -3,10 +3,11 @@
 '''
 @Author: Jin X
 @Date: 2020-02-02 20:50:23
-@LastEditTime : 2020-02-05 21:53:44
+@LastEditTime : 2020-02-06 12:15:38
 '''
 import os
 from time import *
+
 
 def naive3sum(data):
     count = 0
@@ -21,7 +22,7 @@ def naive3sum(data):
 def smart3sum(data):
     count = 0
     for i in range(len(data)):
-        for j in range(len(data)):
+        for j in range(i + 1, len(data)):
             if _binarySearch(data, -(data[i] + data[j])):
                 count += 1
     return count
@@ -48,22 +49,29 @@ def _binarySearch(data, val, *args):
 
 
 if __name__ == "__main__":
-    # a = _binarySearch([-67, -52, -43, -42, -37, -15, -6, -2,
-    #                    3, 6, 12, 42, 65, 124, 342, 502], 503)
-    # print(a)
-    # files = os.listdir("./Algorithm./hw1/hw1-1.data")
-    # for f in files:
-    #     print(f)
-    a = []
-    with open(r"./data/1024int.txt", 'r') as f:
-        for line in f.readlines():
-            a.append(int(line))
-    begint = time()
-    naive3sum(a)
-    endtime = time()
-    print(endtime - begint)
-    begint = time()
-    a.sort()
-    smart3sum(a)
-    endtime=time()
-    print(endtime - begint)
+    files = [8, 32, 128, 512, 1024]
+    for size in files:
+        a = []
+        with open(r"./data/{}int.txt".format(size), 'r') as f:
+            for line in f.readlines():
+                a.append(int(line))
+        print(size, end=' ')
+        begint = time()
+        naive3sum(a)
+        endtime = time()
+        print('{:.2f}'.format(1000*(endtime-begint)), end=' ')
+        a.sort()
+        begint = time()
+        smart3sum(a)
+        endtime = time()
+        print('{:.2f}'.format(1000*(endtime-begint)))
+    
+    # a = []
+    # with open(r"./data/4096int.txt",'r') as f:
+    #     for line in f.readlines():
+    #         a.append(int(line))
+    # a.sort()
+    # begint = time()
+    # smart3sum(a)
+    # endtime = time()
+    # print(endtime - begint)
