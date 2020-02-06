@@ -3,7 +3,7 @@
 '''
 @Author: Jin X
 @Date: 2020-02-02 20:50:23
-@LastEditTime : 2020-02-05 20:40:25
+@LastEditTime : 2020-02-05 21:47:58
 '''
 import os
 from time import *
@@ -56,12 +56,15 @@ if __name__ == "__main__":
     # for f in files:
     #     print(f)
     a = []
-    with open(r"C:\Users\test1\Documents\Homework\Algorithm\
-                hw1\hw1-1.data\8192int.txt", 'r') as f:
+    with open(r"./data/1024int.txt", 'r') as f:
         for line in f.readlines():
             a.append(int(line))
-    print(a)
     begint = time()
-    print(smart3sum(a))
-    endt = time()
-    print(endt - begint)
+    naive3sum(a)
+    endtime = time()
+    print(endtime - begint)
+    begint = time()
+    a.sort()
+    smart3sum(a)
+    endtime=time()
+    print(endtime - begint)
