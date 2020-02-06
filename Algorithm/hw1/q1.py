@@ -3,11 +3,10 @@
 '''
 @Author: Jin X
 @Date: 2020-02-02 20:50:23
-@LastEditTime : 2020-02-05 21:47:58
+@LastEditTime : 2020-02-05 21:53:44
 '''
 import os
 from time import *
-
 
 def naive3sum(data):
     count = 0
