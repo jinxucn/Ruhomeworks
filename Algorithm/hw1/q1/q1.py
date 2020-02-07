@@ -3,10 +3,15 @@
 '''
 @Author: Jin X
 @Date: 2020-02-02 20:50:23
-@LastEditTime : 2020-02-06 12:15:38
+@LastEditTime : 2020-02-06 19:30:20
 '''
-import os
 from time import *
+
+'''
+@description: A naive implementation for 3 sum problem
+@param : {list}
+@return: count for 3 sum
+'''
 
 
 def naive3sum(data):
@@ -19,13 +24,28 @@ def naive3sum(data):
     return count
 
 
+'''
+@description: A smart implementation for 3 sum problem
+@param : {list}
+@return: count for 3 sum
+'''
+
+
 def smart3sum(data):
+    data.sort()
     count = 0
     for i in range(len(data)):
         for j in range(i + 1, len(data)):
-            if _binarySearch(data, -(data[i] + data[j])):
+            if _binarySearch(data, -(data[i] + data[j])):  # binarysearch -(a+b) in data
                 count += 1
     return count
+
+
+'''
+@description: recursively binary search element in data
+@param : {list} {int} [option]{int} {int}
+@return: boolean
+'''
 
 
 def _binarySearch(data, val, *args):
@@ -49,29 +69,41 @@ def _binarySearch(data, val, *args):
 
 
 if __name__ == "__main__":
-    files = [8, 32, 128, 512, 1024]
-    for size in files:
-        a = []
-        with open(r"./data/{}int.txt".format(size), 'r') as f:
-            for line in f.readlines():
-                a.append(int(line))
-        print(size, end=' ')
-        begint = time()
-        naive3sum(a)
-        endtime = time()
-        print('{:.2f}'.format(1000*(endtime-begint)), end=' ')
-        a.sort()
-        begint = time()
-        smart3sum(a)
-        endtime = time()
-        print('{:.2f}'.format(1000*(endtime-begint)))
-    
-    # a = []
-    # with open(r"./data/4096int.txt",'r') as f:
-    #     for line in f.readlines():
-    #         a.append(int(line))
-    # a.sort()
-    # begint = time()
-    # smart3sum(a)
-    # endtime = time()
-    # print(endtime - begint)
+
+    '''
+    Normal entry for a single file
+    Input: change the file path below
+    Output: print out of time cost for naive3sum and smart3sum
+    '''
+    a = []
+    with open(r"./data/1024int.txt", 'r') as f:
+        for line in f.readlines():
+            a.append(int(line))
+    begint = time()
+    smart3sum(a)
+    endtime = time()
+    print('smart3sum takes {:.3f} s'.format(endtime - begint))
+    begint = time()
+    naive3sum(a)
+    endtime = time()
+    print('naiva3sum takes {:.3f} s'.format(endtime - begint))
+
+    '''
+    A run test for given data,
+    4096 and above would take too long to run
+    '''
+    # files = [8, 32, 128, 512, 1024]
+    # for size in files:
+    #     a = []
+    #     with open(r"./data/{}int.txt".format(size), 'r') as f:
+    #         for line in f.readlines():
+    #             a.append(int(line))
+    #     print(size, end=' ')
+    #     begint = time()
+    #     naive3sum(a)
+    #     endtime = time()
+    #     print('{:.2f}'.format(1000*(endtime-begint)), end=' ')
+    #     begint = time()
+    #     smart3sum(a)
+    #     endtime = time()
+    #     print('{:.2f}'.format(1000*(endtime-begint)))
