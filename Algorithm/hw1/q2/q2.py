@@ -3,7 +3,7 @@
 '''
 @Author: Jin X
 @Date: 2020-02-06 12:39:51
-@LastEditTime : 2020-02-06 21:24:57
+@LastEditTime : 2020-02-06 22:09:08
 '''
 from time import *
 
@@ -28,8 +28,8 @@ class QuickFind:
 
     def readPairs(self, pairs):
         for pair in pairs:
-            if not self.find(int(pair[0]), int(pair[1])):
-                self.union(int(pair[0]), int(pair[1]))
+            if not self.find(pair[0],pair[1]):
+                self.union(pair[0],pair[1])
 
 
 class QuickUnion:
@@ -49,8 +49,8 @@ class QuickUnion:
 
     def readPairs(self, pairs):
         for pair in pairs:
-            if not self.find(int(pair[0]), int(pair[1])):
-                self.union(int(pair[0]), int(pair[1]))
+            if not self.find(pair[0],pair[1]):
+                self.union(pair[0],pair[1])
 
 
 class WQuickUnion:
@@ -78,8 +78,8 @@ class WQuickUnion:
 
     def readPairs(self, pairs):
         for pair in pairs:
-            if not self.find(int(pair[0]), int(pair[1])):
-                self.union(int(pair[0]), int(pair[1]))
+            if not self.find(pair[0],pair[1]):
+                self.union(pair[0],pair[1])
 
 
 if __name__ == '__main__':
@@ -90,7 +90,7 @@ if __name__ == '__main__':
         with open(r"./data/{}pair.txt".format(size), 'r') as f:
             for line in f.readlines():
                 pair = line.split()
-                a.append(pair)
+                a.append([int(pair[0]), int(pair[1])])
         print('{:5d}'.format(size), end=' ')
         tstart = time()
         qf = QuickFind()
