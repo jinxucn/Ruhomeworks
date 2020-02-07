@@ -89,8 +89,6 @@ FROM Catalog C
 WHERE C.cost > (SELECT AVG(C1.cost)
                 FROM Catalog C1
                 WHERE C1.pid = C.pid);
-
-select s
 ```
 ### (3)
 ```sql
