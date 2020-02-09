@@ -8,9 +8,10 @@
 
 from time import *
 import numpy as np
+import random
+
 
 def fastest3sum(data):
-    data = sorted(set(data))
     count = 0
     for i in range(len(data)):
         j = i + 1
@@ -21,16 +22,27 @@ def fastest3sum(data):
             elif data[i] + data[j] + data[k] < 0:
                 j += 1
             else:
-                count += 1
-                j += 1
-                k -= 1
+                jsame = 1
+                ksame = 1
+                while j + jsame < k and data[j] == data[j + jsame]:
+                    jsame += 1
+                while k - ksame > j and data[k] == data[k - ksame]:
+                    ksame += 1
+                count += jsame * ksame
+                j += jsame
+                k -= ksame
     return count
 
 
 if __name__ == "__main__":
+    sizes = [128, 512, 1024, 4096, 8192, 16384]
+    for size in sizes:
 
-    a = np.random.randint(-10000,10000,8000)
-    begint = process_time()
-    print(fastest3sum(a))
-    endtime = process_time()
-    print('fastest3sum takes {:.3f} s'.format(endtime - begint))
+        # a = random.sample(range(-10000, 10000), size)
+        a = np.random.randint(-10000, 10000, size)
+        a.sort()
+        print('{:5d}'.format(size), end=' ')
+        tstart = process_time()
+        print('{} matches'.format(fastest3sum(a)), end=' ')
+        endtime = process_time()
+        print('takes {:.3f} ms'.format(1000*(endtime - tstart)))

@@ -34,7 +34,7 @@ class QuickFind:
 
 class QuickUnion:
     def __init__(self):
-        self.id = [i for i in range(8193)]
+        self.id = [i for i in range(_N)]
 
     def _root(self, p):
         while p != self.id[p]:
@@ -92,18 +92,18 @@ if __name__ == '__main__':
                 pair = line.split()
                 a.append([int(pair[0]), int(pair[1])])
         print('{:5d}'.format(size), end=' ')
-        tstart = process_time()
+        tstart = perf_counter()
         qf = QuickFind()
         qf.readPairs(a)
-        tend = process_time()
-        print('qf:{:.10f}'.format(tend - tstart), end=' ')
-        tstart = process_time()
+        tend = perf_counter()
+        print('qf:{:.3f}'.format(1000*(tend - tstart)), end=' ')
+        tstart = perf_counter()
         qu = QuickUnion()
         qu.readPairs(a)
-        tend = process_time()
-        print('qu:{:.10f}'.format(tend - tstart), end=' ')
-        tstart = process_time()
+        tend = perf_counter()
+        print('qu:{:.3f}'.format(1000*(tend - tstart)), end=' ')
+        tstart = perf_counter()
         wqu = WQuickUnion()
         wqu.readPairs(a)
-        tend = process_time()
-        print('wqu:{:.10f}'.format(tend - tstart))
+        tend = perf_counter()
+        print('wqu:{:.3f}'.format(1000*(tend - tstart)))

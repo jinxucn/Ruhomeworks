@@ -16,13 +16,17 @@ def farthestPair(data):
             min = val
         if val > max:
             max = val
-    diff = max - min
-    return diff
+    # diff = max - min
+    return [min,max]
 
 
 if __name__ == '__main__':
-    a = np.random.randint(-10000, 10000, 50000000)
-    tstart = process_time()
-    print(farthestPair(a))
-    tend = process_time()
-    print('farthestPair takes {:.10f} s'.format(tend - tstart))
+    sizes = [128, 512, 1024, 4096,  8192, 16384, 32768, 65536]
+    for size in sizes:
+
+        a = np.random.randint(-100000, 100000, size)
+        print('{:5d}'.format(size), end=' ')
+        tstart =perf_counter()
+        print('pair is {}'.format(farthestPair(a)), end=' ')
+        tend = perf_counter()
+        print('takes {:.2f} ms'.format(1000 * (tend - tstart)))

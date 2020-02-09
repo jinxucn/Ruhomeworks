@@ -75,35 +75,35 @@ if __name__ == "__main__":
     Input: change the file path below
     Output: print out of time cost for naive3sum and smart3sum
     '''
-    a = []
-    with open(r"./data/32int.txt", 'r') as f:
-        for line in f.readlines():
-            a.append(int(line))
-    begint = process_time()
-    smart3sum(a)
-    endtime = process_time()
-    print('smart3sum takes {} s'.format(endtime - begint))
-    begint = process_time()
-    naive3sum(a)
-    endtime = process_time()
-    print('naive3sum takes {} s'.format(endtime - begint))
+    # a = []
+    # with open(r"./data/8int.txt", 'r') as f:
+    #     for line in f.readlines():
+    #         a.append(int(line))
+    # tstart = perf_counter()
+    # smart3sum(a)
+    # endtime = perf_counter()
+    # print('smart3sum takes {} s'.format(endtime - tstart))
+    # tstart = perf_counter()
+    # naive3sum(a)
+    # endtime = perf_counter()
+    # print('naive3sum takes {} s'.format(endtime - tstart))
 
     '''
     A run test for given data,
     4096 and above would take too long to run
     '''
-    # files = [8, 32, 128, 512, 1024]
-    # for size in files:
-    #     a = []
-    #     with open(r"./data/{}int.txt".format(size), 'r') as f:
-    #         for line in f.readlines():
-    #             a.append(int(line))
-    #     print(size, end=' ')
-    #     begint = process_time()
-    #     naive3sum(a)
-    #     endtime = process_time()
-    #     print('{:.2f}'.format(1000*(endtime-begint)), end=' ')
-    #     begint = process_time()
-    #     smart3sum(a)
-    #     endtime = process_time()
-    #     print('{:.2f}'.format(1000*(endtime-begint)))
+    files = [8, 32, 128, 512, 1024]
+    for size in files:
+        a = []
+        with open(r"./data/{}int.txt".format(size), 'r') as f:
+            for line in f.readlines():
+                a.append(int(line))
+        print(size, end=' ')
+        tstart = perf_counter()
+        naive3sum(a)
+        endtime = perf_counter()
+        print('{:.2f}'.format(1000*(endtime-tstart)), end=' ')
+        tstart = perf_counter()
+        smart3sum(a)
+        endtime = perf_counter()
+        print('{:.2f}'.format(1000*(endtime-tstart)))
