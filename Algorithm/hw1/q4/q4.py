@@ -3,31 +3,26 @@
 '''
 @Author: Jin X
 @Date: 2020-02-06 21:50:42
-@LastEditTime : 2020-02-06 22:07:12
+@LastEditTime : 2020-02-08 17:59:02
 '''
 from time import *
+import numpy as np
 
 
-def farthestPair(pairs):
-    fpair = [0, 0]
-    for pair in pairs:
-        if abs(pair[0]-pair[1]) > abs(fpair[0] - fpair[1]):
-            fpair = pair
-    return fpair
+def farthestPair(data):
+    min = max = data[0]
+    for val in data:
+        if val < min:
+            min = val
+        if val > max:
+            max = val
+    diff = max - min
+    return diff
 
 
 if __name__ == '__main__':
-    files = [8, 32, 128, 512, 1024, 4096, 8192]
-    a = []
-    for size in files:
-        a = []
-        with open(r"./data/{}pair.txt".format(size), 'r') as f:
-            for line in f.readlines():
-                pair = line.split()
-                a.append([int(pair[0]),int(pair[1])])
-        print('{:5d}'.format(size), end=' ')
-        tstart = time()
-        fpair = farthestPair(a)
-        tend = time()
-        print('farthest pair is ({},{})'.format(fpair[0], fpair[1]), end=' ')
-        print('taking {:.10f} s'.format(tend - tstart))
+    a = np.random.randint(-10000, 10000, 50000000)
+    tstart = process_time()
+    print(farthestPair(a))
+    tend = process_time()
+    print('farthestPair takes {:.10f} s'.format(tend - tstart))

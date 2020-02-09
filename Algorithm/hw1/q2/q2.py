@@ -3,7 +3,7 @@
 '''
 @Author: Jin X
 @Date: 2020-02-06 12:39:51
-@LastEditTime : 2020-02-06 22:09:08
+@LastEditTime : 2020-02-08 17:41:05
 '''
 from time import *
 
@@ -92,18 +92,18 @@ if __name__ == '__main__':
                 pair = line.split()
                 a.append([int(pair[0]), int(pair[1])])
         print('{:5d}'.format(size), end=' ')
-        tstart = time()
+        tstart = process_time()
         qf = QuickFind()
         qf.readPairs(a)
-        tend = time()
+        tend = process_time()
         print('qf:{:.10f}'.format(tend - tstart), end=' ')
-        tstart = time()
+        tstart = process_time()
         qu = QuickUnion()
         qu.readPairs(a)
-        tend = time()
+        tend = process_time()
         print('qu:{:.10f}'.format(tend - tstart), end=' ')
-        tstart = time()
+        tstart = process_time()
         wqu = WQuickUnion()
         wqu.readPairs(a)
-        tend = time()
+        tend = process_time()
         print('wqu:{:.10f}'.format(tend - tstart))

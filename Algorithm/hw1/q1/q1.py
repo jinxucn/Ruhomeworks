@@ -3,7 +3,7 @@
 '''
 @Author: Jin X
 @Date: 2020-02-02 20:50:23
-@LastEditTime : 2020-02-06 19:30:20
+@LastEditTime : 2020-02-08 17:40:42
 '''
 from time import *
 
@@ -76,17 +76,17 @@ if __name__ == "__main__":
     Output: print out of time cost for naive3sum and smart3sum
     '''
     a = []
-    with open(r"./data/1024int.txt", 'r') as f:
+    with open(r"./data/32int.txt", 'r') as f:
         for line in f.readlines():
             a.append(int(line))
-    begint = time()
+    begint = process_time()
     smart3sum(a)
-    endtime = time()
-    print('smart3sum takes {:.3f} s'.format(endtime - begint))
-    begint = time()
+    endtime = process_time()
+    print('smart3sum takes {} s'.format(endtime - begint))
+    begint = process_time()
     naive3sum(a)
-    endtime = time()
-    print('naiva3sum takes {:.3f} s'.format(endtime - begint))
+    endtime = process_time()
+    print('naive3sum takes {} s'.format(endtime - begint))
 
     '''
     A run test for given data,
@@ -99,11 +99,11 @@ if __name__ == "__main__":
     #         for line in f.readlines():
     #             a.append(int(line))
     #     print(size, end=' ')
-    #     begint = time()
+    #     begint = process_time()
     #     naive3sum(a)
-    #     endtime = time()
+    #     endtime = process_time()
     #     print('{:.2f}'.format(1000*(endtime-begint)), end=' ')
-    #     begint = time()
+    #     begint = process_time()
     #     smart3sum(a)
-    #     endtime = time()
+    #     endtime = process_time()
     #     print('{:.2f}'.format(1000*(endtime-begint)))
