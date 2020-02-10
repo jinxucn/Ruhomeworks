@@ -3,7 +3,7 @@
 '''
 @Author: Jin X
 @Date: 2020-02-02 20:50:23
-@LastEditTime : 2020-02-10 13:40:14
+@LastEditTime : 2020-02-10 14:02:06
 '''
 from time import perf_counter
 
@@ -30,7 +30,7 @@ def smart3sum(data):
 
 
 # local function, binary search val in data
-#usage: _binarySearch(data,val) or _binarySearch(data,val,low,high)
+# usage: _binarySearch(data,val) or _binarySearch(data,val,low,high)
 def _binarySearch(data, val, *args):
     if len(args) == 0:
         lo = 0
