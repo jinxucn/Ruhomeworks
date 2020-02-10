@@ -3,15 +3,9 @@
 '''
 @Author: Jin X
 @Date: 2020-02-02 20:50:23
-@LastEditTime : 2020-02-08 17:40:42
+@LastEditTime : 2020-02-10 13:40:14
 '''
-from time import *
-
-'''
-@description: A naive implementation for 3 sum problem
-@param : {list}
-@return: count for 3 sum
-'''
+from time import perf_counter
 
 
 def naive3sum(data):
@@ -24,30 +18,19 @@ def naive3sum(data):
     return count
 
 
-'''
-@description: A smart implementation for 3 sum problem
-@param : {list}
-@return: count for 3 sum
-'''
-
-
 def smart3sum(data):
     data.sort()
     count = 0
     for i in range(len(data)):
         for j in range(i + 1, len(data)):
-            if _binarySearch(data, -(data[i] + data[j])):  # binarysearch -(a+b) in data
+            # binarysearch -(a+b) in data
+            if _binarySearch(data, -(data[i] + data[j])):
                 count += 1
     return count
 
 
-'''
-@description: recursively binary search element in data
-@param : {list} {int} [option]{int} {int}
-@return: boolean
-'''
-
-
+# local function, binary search val in data
+#usage: _binarySearch(data,val) or _binarySearch(data,val,low,high)
 def _binarySearch(data, val, *args):
     if len(args) == 0:
         lo = 0
@@ -71,9 +54,9 @@ def _binarySearch(data, val, *args):
 if __name__ == "__main__":
 
     '''
-    Normal entry for a single file
+    Entry for a single file
     Input: change the file path below
-    Output: print out of time cost for naive3sum and smart3sum
+    Output: print out of runtime for naive3sum and smart3sum
     '''
     # a = []
     # with open(r"./data/8int.txt", 'r') as f:
@@ -88,8 +71,10 @@ if __name__ == "__main__":
     # endtime = perf_counter()
     # print('naive3sum takes {} s'.format(endtime - tstart))
 
+    ##################################################################
+
     '''
-    A run test for given data,
+    Runtest for given data,
     4096 and above would take too long to run
     '''
     files = [8, 32, 128, 512, 1024]
