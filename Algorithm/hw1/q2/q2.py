@@ -3,7 +3,7 @@
 '''
 @Author: Jin X
 @Date: 2020-02-06 12:39:51
-@LastEditTime : 2020-02-10 13:49:14
+@LastEditTime : 2020-02-10 22:01:13
 '''
 from time import perf_counter
 
@@ -83,33 +83,6 @@ class WQuickUnion:
 
 
 if __name__ == '__main__':
-    '''
-    Entry for a single file
-    Input: change the file path below
-    Output: print out of runtime for quickfind, quickunion, and weighted quickunion
-    '''
-    # a = []
-    # with open(r"./data/8pair.txt", 'r') as f:
-    #     for line in f.readlines():
-    #         pair = line.split()
-    #         a.append([int(pair[0]), int(pair[1])])
-    # tstart = perf_counter()
-    # qf = QuickFind()
-    # qf.readPairs(a)
-    # tend = perf_counter()
-    # print('qf:{:.3f}'.format(1000*(tend - tstart)), end=' ')
-    # tstart = perf_counter()
-    # qu = QuickUnion()
-    # qu.readPairs(a)
-    # tend = perf_counter()
-    # print('qu:{:.3f}'.format(1000*(tend - tstart)), end=' ')
-    # tstart = perf_counter()
-    # wqu = WQuickUnion()
-    # wqu.readPairs(a)
-    # tend = perf_counter()
-    # print('wqu:{:.3f}'.format(1000*(tend - tstart)))
-
-    ##################################################################
 
     '''
     Runtest for given data,
@@ -136,4 +109,31 @@ if __name__ == '__main__':
         wqu = WQuickUnion()
         wqu.readPairs(a)
         tend = perf_counter()
-        print('wqu:{:.3f}'.format(1000*(tend - tstart)))
+        print('wqu:{:.3f}'.format(1000 * (tend - tstart)))
+
+    ##################################################################
+    '''
+    Entry for a single file
+    Input: change the file path below
+    Output: print out of runtime for quickfind, quickunion, and weighted quickunion
+    '''
+    # a = []
+    # with open(r"./data/8pair.txt", 'r') as f:
+    #     for line in f.readlines():
+    #         pair = line.split()
+    #         a.append([int(pair[0]), int(pair[1])])
+    # tstart = perf_counter()
+    # qf = QuickFind()
+    # qf.readPairs(a)
+    # tend = perf_counter()
+    # print('qf:{:.3f}'.format(1000*(tend - tstart)), end=' ')
+    # tstart = perf_counter()
+    # qu = QuickUnion()
+    # qu.readPairs(a)
+    # tend = perf_counter()
+    # print('qu:{:.3f}'.format(1000*(tend - tstart)), end=' ')
+    # tstart = perf_counter()
+    # wqu = WQuickUnion()
+    # wqu.readPairs(a)
+    # tend = perf_counter()
+    # print('wqu:{:.3f}'.format(1000*(tend - tstart)))

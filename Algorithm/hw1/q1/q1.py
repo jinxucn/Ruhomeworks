@@ -3,7 +3,7 @@
 '''
 @Author: Jin X
 @Date: 2020-02-02 20:50:23
-@LastEditTime : 2020-02-10 21:40:39
+@LastEditTime : 2020-02-10 21:59:38
 '''
 from time import perf_counter
 
@@ -53,26 +53,6 @@ def _binarySearch(data, val, *args):
 if __name__ == "__main__":
 
     '''
-    Entry for a single file
-    Input: change the file path below
-    Output: print out of runtime for naive3sum and smart3sum
-    '''
-    # a = []
-    # with open(r"./data/8int.txt", 'r') as f:
-    #     for line in f.readlines():
-    #         a.append(int(line))
-    # tstart = perf_counter()
-    # smart3sum(a)
-    # endtime = perf_counter()
-    # print('smart3sum takes {} s'.format(endtime - tstart))
-    # tstart = perf_counter()
-    # naive3sum(a)
-    # endtime = perf_counter()
-    # print('naive3sum takes {} s'.format(endtime - tstart))
-
-    ##################################################################
-
-    '''
     Runtest for given data,
     4096 and above would take too long to run
     '''
@@ -91,4 +71,24 @@ if __name__ == "__main__":
         tstart = perf_counter()
         smart3sum(a)
         endtime = perf_counter()
-        print('{:.2f}'.format(1000*(endtime-tstart)))
+        print('{:.2f}'.format(1000 * (endtime - tstart)))
+    ##################################################################
+
+    '''
+    Entry for a single file
+    Input: change the file path below
+    Output: print out of runtime for naive3sum and smart3sum
+    '''
+    # a = []
+    # with open(r"./data/8int.txt", 'r') as f:
+    #     for line in f.readlines():
+    #         a.append(int(line))
+    # tstart = perf_counter()
+    # naive3sum(a)
+    # endtime = perf_counter()
+    # print('naive3sum takes {} s'.format(endtime - tstart))
+    # a.sort()
+    # tstart = perf_counter()
+    # smart3sum(a)
+    # endtime = perf_counter()
+    # print('smart3sum takes {} s'.format(endtime - tstart))
