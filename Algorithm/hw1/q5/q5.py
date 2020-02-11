@@ -3,7 +3,7 @@
 '''
 @Author: Jin X
 @Date: 2020-02-07 15:46:39
-@LastEditTime : 2020-02-10 20:25:56
+@LastEditTime : 2020-02-10 21:42:10
 '''
 
 from time import perf_counter
@@ -45,7 +45,7 @@ if __name__ == "__main__":
                 a.append(int(line))
         a.sort()
         print('{:5d}'.format(size), end=' ')
-        tstart =  perf_counter()
+        tstart = perf_counter()
         print('{} matches'.format(fastest3sum(a)), end=' ')
-        endtime =  perf_counter()
+        endtime = perf_counter()
         print('takes {:.3f} ms'.format(1000*(endtime - tstart)))
