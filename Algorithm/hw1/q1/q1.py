@@ -3,7 +3,7 @@
 '''
 @Author: Jin X
 @Date: 2020-02-02 20:50:23
-@LastEditTime : 2020-02-10 14:02:06
+@LastEditTime : 2020-02-10 21:40:39
 '''
 from time import perf_counter
 
@@ -19,7 +19,6 @@ def naive3sum(data):
 
 
 def smart3sum(data):
-    data.sort()
     count = 0
     for i in range(len(data)):
         for j in range(i + 1, len(data)):
@@ -87,7 +86,8 @@ if __name__ == "__main__":
         tstart = perf_counter()
         naive3sum(a)
         endtime = perf_counter()
-        print('{:.2f}'.format(1000*(endtime-tstart)), end=' ')
+        print('{:.2f}'.format(1000 * (endtime - tstart)), end=' ')
+        a.sort()
         tstart = perf_counter()
         smart3sum(a)
         endtime = perf_counter()
