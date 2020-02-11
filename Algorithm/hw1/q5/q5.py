@@ -3,7 +3,7 @@
 '''
 @Author: Jin X
 @Date: 2020-02-07 15:46:39
-@LastEditTime : 2020-02-10 13:59:22
+@LastEditTime : 2020-02-10 20:25:56
 '''
 
 from time import perf_counter
@@ -14,7 +14,7 @@ def fastest3sum(data):
     for i in range(len(data)):      # use two local index to go over the array in the secondary loop
         j = i + 1                   # j goes from the left side to the right
         k = len(data) - 1           # k goes from the right side to the left
-        while j < k:                #until they meet
+        while j < k:                # until they meet
             if data[i] + data[j] + data[k] > 0:     # if it's too big
                 k -= 1                              # find a smaller one
             elif data[i] + data[j] + data[k] < 0:   # if too small
@@ -26,8 +26,8 @@ def fastest3sum(data):
                     jsame += 1
                 while k - ksame > j and data[k] == data[k - ksame]:
                     ksame += 1
-                count += jsame * ksame
-                j += jsame
+                count += jsame * ksame              # for N duplicates of j, and M of k
+                j += jsame                          # count N*M times
                 k -= ksame
     return count
 
