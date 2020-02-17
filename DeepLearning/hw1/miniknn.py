@@ -3,7 +3,7 @@
 '''
 @Author: Jin X
 @Date: 2020-02-12 21:33:19
-@LastEditTime : 2020-02-13 18:27:56
+@LastEditTime: 2020-02-17 12:15:39
 '''
 import matplotlib.pyplot as plt
 import numpy as np
@@ -23,13 +23,14 @@ mini_test = mini_test.reshape(10, 2)
 # Define knn classifier
 def kNNClassify(newInput, dataSet, labels, k):
     result = []
-    ########################
-    # Input your code here #
-    ########################
-
-    ####################
-    # End of your code #
-    ####################
+    newInput_squared = np.sum(newInput ** 2, axis=1)
+    dataSet_squared = np.sum(dataSet ** 2, axis=1)
+    distances = np.sqrt(newInput_squared[:, None]+dataSet_squared -
+                        2*np.dot(newInput, dataSet.T))
+    nearestKindices = np.argsort(distances)[:, :k]
+    nearestKlabels = labels[nearestKindices]
+    for i in range(nearestKlabels.shape[0]):
+        result.append(np.argmax(np.bincount(nearestKlabels[i, :])))
     return result
 
 

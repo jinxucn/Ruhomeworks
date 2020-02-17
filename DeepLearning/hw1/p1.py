@@ -3,7 +3,7 @@
 '''
 @Author: Jin X
 @Date: 2020-02-12 21:37:54
-@LastEditTime : 2020-02-13 18:22:36
+@LastEditTime: 2020-02-17 12:11:10
 '''
 
 import numpy as np
@@ -21,18 +21,14 @@ test_data = np.array([1, 0, 1])
 
 
 def kNNClassify(newInput, dataSet, labels, k):
-    # newInput_squared = np.sum(newInput ** 2,axis=1)
-    # dataSet_squared = np.sum(dataSet ** 2, axis=1)
-    # distances = np.sqrt(newInput_squared+dataSet_squared -
-    #                     2*np.dot(newInput, dataSet.T))
-    distances = np.sum((train_data-test_data)**2, axis=1)
+    distances = np.sum((dataSet-newInput)**2, axis=1)
     nearestKindices = np.argsort(distances)[:k]
     nearestKlabels = labels[nearestKindices]
     return np.argmax(np.bincount(nearestKlabels)), dataSet[nearestKindices]
 
 
 if __name__ == '__main__':
-    k = 2
+    k = 3
     label, neighbors = kNNClassify(test_data, train_data, train_label, k)
     print('k: {}, class: {}'.format(k, label))
     print('nearest {} points are \n{}'.format(k, neighbors))
@@ -51,5 +47,5 @@ if __name__ == '__main__':
     ax.set_xlim3d(-1, 2)
     ax.set_ylim3d(-2, 2)
     ax.set_zlim3d(-2, 3)
-    plt.savefig('q1.png')
+    plt.savefig('q1k3.png')
     plt.show()
