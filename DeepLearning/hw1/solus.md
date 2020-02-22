@@ -1,5 +1,11 @@
 # HW1
 
+###### Jin Xu 
+
+###### jx217
+
+------
+
 ## Problem1
 
 #### Implementation
@@ -17,6 +23,8 @@ def kNNClassify(newInput, dataSet, labels, k):
 ```
 
 I print out the classified label and k nearest neighbors of test data and plot a 3D scatter diagram(the star mark is the test data, X mark are the neighbors).
+
+#### Result
 
 #### K=1
 

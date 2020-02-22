@@ -1,0 +1,19 @@
+{
+    "cSpell.words": [
+        "Klabels"
+    ],
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>",
+                "<space>",
+                "f",
+                "m"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+worst case
+size : 1024 shellSort takes : 0.002779799999999999 s insertionSort takes : 0.000857099999999944 s
+size : 2048 shellSort takes : 0.005408699999999933 s insertionSort takes : 0.0018940999999998986 s
+size : 4096 shellSort takes : 0.006021300000000007 s insertionSort takes : 0.0030293000000000125 s
+size : 8192 shellSort takes : 0.009710200000000002 s insertionSort takes : 0.0032023999999999386 s
+size : 16384 shellSort takes : 0.018740699999999944 s insertionSort takes : 0.006323899999999938 s
+size : 32768 shellSort takes : 0.046654899999999944 s insertionSort takes : 0.01293119999999992 s
+average case
+size : 1024 shellSort takes : 0.040205500000000005 s insertionSort takes : 0.23890429999999996 s
+size : 2048 shellSort takes : 0.16464900000000005 s insertionSort takes : 0.9866739 s
+size : 4096 shellSort takes : 0.6121105999999998 s insertionSort takes : 3.9104404999999995 s
+size : 8192 shellSort takes : 2.4779761999999996 s insertionSort takes : 15.8408397 s
+size : 16384 shellSort takes : 9.921413300000001 s insertionSort takes : 63.669326700000006 s
+size : 32768 shellSort takes : 37.868193399999996 s insertionSort takes : 252.37208719999998 s
