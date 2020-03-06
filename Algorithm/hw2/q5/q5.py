@@ -3,7 +3,7 @@
 '''
 @Author: Jin X
 @Date: 2020-02-22 20:33:50
-@LastEditTime: 2020-02-23 23:09:40
+@LastEditTime: 2020-02-25 15:12:47
 '''
 from time import perf_counter
 from random import sample
@@ -27,13 +27,17 @@ def quickSort(a, *args):
             # partitioning
             i, j = lo, hi
             pivot = a[lo]                               # save a[lo] -> pivot
+            print(pivot)
             while i < j:
                 while i < j and a[j] > pivot:           # find small at right
                     j -= 1
                 while i < j and a[i] < pivot:           # find big at left
                     i += 1
+                if i == j:
+                    break
                 a[i], a[j] = a[j], a[i]                 # swap
-            a[i] = pivot                                # meet point is pivot
+                print(a)
+            # a[i] = pivot                                # meet point is pivot
             quickSort(a, lo, i - 1)
             quickSort(a, i+1, hi)
 
@@ -75,49 +79,52 @@ def quickSortCF(a, *args):
 
 
 if __name__ == '__main__':
-    sizes = [1024, 2048, 4096, 8192, 16384, 32768]
-    print('best case')
-    for size in sizes:
-        a = []
-        with open(r'./data/data0.{}'.format(size)) as f:
-            for line in f.readlines():
-                a.append(int(line))
-        print('size: {}'.format(size), end=' ')
-        tempa = a.copy()
-        tstart = perf_counter()
-        quickSort(tempa)
-        tend = perf_counter()
-        print('quickSort takes {:.2f} ms'.format(1000*(tend-tstart)), end=' ')
-        tstart = perf_counter()
-        quickSortCF(a, 7)
-        tend = perf_counter()
-        print('quickSortCF takes {:.2f} ms'.format(1000*(tend-tstart)))
+    # sizes = [1024, 2048, 4096, 8192, 16384, 32768]
+    # print('best case')
+    # for size in sizes:
+    #     a = []
+    #     with open(r'./data/data0.{}'.format(size)) as f:
+    #         for line in f.readlines():
+    #             a.append(int(line))
+    #     print('size: {}'.format(size), end=' ')
+    #     tempa = a.copy()
+    #     tstart = perf_counter()
+    #     quickSort(tempa)
+    #     tend = perf_counter()
+    #     print('quickSort takes {:.2f} ms'.format(1000*(tend-tstart)), end=' ')
+    #     tstart = perf_counter()
+    #     quickSortCF(a, 7)
+    #     tend = perf_counter()
+    #     print('quickSortCF takes {:.2f} ms'.format(1000*(tend-tstart)))
 
-    print('average case')
-    for size in sizes:
-        a = []
-        with open(r'./data/data1.{}'.format(size)) as f:
-            for line in f.readlines():
-                a.append(int(line))
-        print('size: {}'.format(size), end=' ')
-        tempa = a.copy()
-        tstart = perf_counter()
-        quickSort(tempa)
-        tend = perf_counter()
-        print('quickSort takes {:.2f} ms'.format(1000*(tend-tstart)), end=' ')
-        tstart = perf_counter()
-        quickSortCF(a, 7)
-        tend = perf_counter()
-        print('quickSortCF takes {:.2f} ms'.format(1000*(tend-tstart)))
+    # print('average case')
+    # for size in sizes:
+    #     a = []
+    #     with open(r'./data/data1.{}'.format(size)) as f:
+    #         for line in f.readlines():
+    #             a.append(int(line))
+    #     print('size: {}'.format(size), end=' ')
+    #     tempa = a.copy()
+    #     tstart = perf_counter()
+    #     quickSort(tempa)
+    #     tend = perf_counter()
+    #     print('quickSort takes {:.2f} ms'.format(1000*(tend-tstart)), end=' ')
+    #     tstart = perf_counter()
+    #     quickSortCF(a, 7)
+    #     tend = perf_counter()
+    #     print('quickSortCF takes {:.2f} ms'.format(1000*(tend-tstart)))
 
-    print('cut-off')
-    a = []
-    with open(r'./data/data1.32768') as f:
-        for line in f.readlines():
-            a.append(int(line))
-    for cut in range(3, 40):
-        tempa = a.copy()
-        tstart = perf_counter()
-        quickSortCF(tempa, cut)
-        tend = perf_counter()
-        print('cut: {}, takes: {:.2f} ms'.format(cut, 1000 * (tend - tstart)))
+    # print('cut-off')
+    # a = []
+    # with open(r'./data/data1.32768') as f:
+    #     for line in f.readlines():
+    #         a.append(int(line))
+    # for cut in range(3, 40):
+    #     tempa = a.copy()
+    #     tstart = perf_counter()
+    #     quickSortCF(tempa, cut)
+    #     tend = perf_counter()
+    #     print('cut: {}, takes: {:.2f} ms'.format(cut, 1000 * (tend - tstart)))
+    a = sample(range(20), 20)
+    quickSort(a)
+    print(a)
