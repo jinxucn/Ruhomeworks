@@ -3,10 +3,10 @@
 '''
 @Author: Jin X
 @Date: 2020-03-23 14:14:29
-@LastEditTime: 2020-03-26 17:51:54
+@LastEditTime: 2020-03-28 15:02:47
 '''
 import numpy as np
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import random
 
 
@@ -44,53 +44,55 @@ if __name__ == "__main__":
             f.readline()
             for line in f.readlines():
                 raw.append(float(line.split(',')[2]))
-        # train = np.asarray(raw)
-        # M_min = 0
-        # rss_min = float('inf')
-        # for M in range(4, 14):
-        #     m, v = curfit(train, M=M)
-        #     rss = sum(np.power(m[0:-1]-train, 2))
-        #     if rss < rss_min:
-        #         rss_min = rss
-        #         M_min = M
-        #         mean = m
-        #         variance = v
+        train = np.asarray(raw)
+        M_min = 0
+        rss_min = float('inf')
+        for M in range(4, 14):
+            m, v = curfit(train, M=M)
+            rss = sum(np.power(m[0:-1]-train, 2))
+            if rss < rss_min:
+                rss_min = rss
+                M_min = M
+                mean = m
+                variance = v
 
-        # N_index = random.sample(range(50, 200), 10)
-        # abs_mean_error = sum(abs(mean[N_index] - train[N_index])) / 10
-        # relative_error = sum(
-        #     abs(mean[N_index] - train[N_index])/mean[N_index])/10
+        N_index = random.sample(range(50, 200), 10)
+        abs_mean_error = sum(abs(mean[N_index] - train[N_index])) / 10
+        relative_error = sum(
+            abs(mean[N_index] - train[N_index])/mean[N_index])/10
         # print(abs_mean_error, relative_error)
         # print(name, M_min)
-        # x = [i for i in range(len(train))]
-        # plt.figure("CURVE FITTINT "+name+" M="+str(M_min))
-        # plt.scatter(x, train, s=50, edgecolors='y', facecolor="none")
-        # plt.plot(x, mean[0:-1])
-        # plt.fill_between(x, mean[0:-1] - variance,
-        #                  mean[0:-1] + variance, color="pink", alpha=0.5)
+        print("stock: {}, M: {}, absoluteError: {:.2f}, relativeError:{:.1f}%".format(name,M_min,abs_mean_error,relative_error*100))
+        x = [i for i in range(len(train))]
+        plt.figure("CURVE FITTINT "+name+" M="+str(M_min))
+        plt.scatter(x, train, s=50, edgecolors='y', facecolor="none")
+        plt.plot(x, mean[0:-1])
+        plt.fill_between(x, mean[0:-1] - variance,
+                         mean[0:-1] + variance, color="pink", alpha=0.5)
+    plt.show()
 
-        abs_mean_error = []
-        relative_error = []
-        for i in range(15):
-            N = random.randint(200, 250)
+        # abs_mean_error = []
+        # relative_error = []
+        # for i in range(15):
+        #     N = random.randint(200, 250)
 
-            train = np.asarray(raw[0:N])
-            rss_min = float('inf')
-            for M in range(4, 14):
-                m, v = curfit(train[0:N - 1], M=M)
-                rss = sum(np.power(m[0:-1]-train[0:N-1], 2))
-                if rss < rss_min:
-                    rss_min = rss
-                    # M_min = M
-                    mean = m
-                    variance = v
+        #     train = np.asarray(raw[0:N])
+        #     rss_min = float('inf')
+        #     for M in range(4, 14):
+        #         m, v = curfit(train[0:N - 1], M=M)
+        #         rss = sum(np.power(m[0:-1]-train[0:N-1], 2))
+        #         if rss < rss_min:
+        #             rss_min = rss
+        #             # M_min = M
+        #             mean = m
+        #             variance = v
 
-            abs_mean_error.append(abs(train[-1]-mean[-1]))
-            relative_error.append(abs(train[-1]-mean[-1])/train[-1])
-        abs_mean_error = sum(abs_mean_error)/len(abs_mean_error)
-        relative_error = sum(relative_error) / len(relative_error)
-        print(abs_mean_error, relative_error)
+        #     abs_mean_error.append(abs(train[-1]-mean[-1]))
+        #     relative_error.append(abs(train[-1]-mean[-1])/train[-1])
+        # abs_mean_error = sum(abs_mean_error)/len(abs_mean_error)
+        # relative_error = sum(relative_error) / len(relative_error)
+        # print(abs_mean_error, relative_error)
 
-        with open('./result.csv', "a+") as f:
-            f.write(str(name)+','+str(abs_mean_error) +
-                    ','+str(relative_error) + '\n')
+        # with open('./result.csv', "a+") as f:
+        #     f.write(str(name)+','+str(abs_mean_error) +
+        #             ','+str(relative_error) + '\n')
